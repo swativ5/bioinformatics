@@ -19,6 +19,21 @@ def MinimumSkew(genome):
             min_skew = skew[i+1]
     return " ".join(map(str, [i for i, x in enumerate(skew) if x == min_skew]))
 
+
+def MaximumSkew(genome):
+    skew = [0]
+    max_skew = 0
+    for i in range(len(genome)):
+        if genome[i] == "C":
+            skew.append(skew[i] - 1)
+        elif genome[i] == "G":
+            skew.append(skew[i] + 1)
+        else:
+            skew.append(skew[i])
+        if skew[i+1] > max_skew:
+            max_skew = skew[i+1]
+    return " ".join(map(str, [i for i, x in enumerate(skew) if x == max_skew]))
+
 if __name__ == "__main__":
     genome = "TAAAGACTGCCGAGAGGCCAACACGAGTGCTAGAACGAGGGGCGTAAACGCGGGTCCGAT"
     print(MinimumSkew(genome))
@@ -36,6 +51,6 @@ if __name__ == "__main__":
         else:
             print(f"{i+1} no {MinimumSkew(Genome)}, {file_output_text}")
     
-    f = open("Salmonella_enterica.txt")
-    Genome = f.read()
-    print(MinimumSkew(Genome))
+    genome = "GCATACACTTCCCAGTAGGTACTG"
+    print(MaximumSkew(genome))
+    
