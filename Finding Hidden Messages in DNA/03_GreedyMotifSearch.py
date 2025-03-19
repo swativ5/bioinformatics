@@ -28,15 +28,14 @@ def ProfileMatrix(Motifs):
     k = len(Motifs[0])
     n = len(Motifs)
     seq_dict = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
-    P = [[0.0] * k for _ in range(4)]  # Fix matrix size
-
+    P = [[0.0] * k for _ in range(4)]
     for motif in Motifs:
         for i in range(k):
             P[seq_dict[motif[i]]][i] += 1
 
     for i in range(4):
         for j in range(k):
-            P[i][j] /= n  # Normalize probabilities correctly
+            P[i][j] /= n
 
     return P
 
@@ -44,7 +43,7 @@ def Pr(Dna, Profile):
     seq_dict = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
     prob = 1
     for i in range(len(Dna)):
-        prob *= Profile[seq_dict[Dna[i]]][i]  # Fix indexing order
+        prob *= Profile[seq_dict[Dna[i]]][i]
     return prob
 
 def ProfileMostProbableKmer(Text, k, Profile):
