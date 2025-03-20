@@ -1,0 +1,5 @@
+AT: TG
+CA: AT
+GG: GG GT
+GT: TG
+TG: GG GT
