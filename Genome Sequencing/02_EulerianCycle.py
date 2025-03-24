@@ -26,56 +26,73 @@ Sample Input:
 Sample Output:
 6 8 7 9 6 5 4 2 1 0 3 2 6
 """
-
 def formCycle(graph, node):
     cycle = []
     stack = [node]
-    visited_edges = set()  # Track visited edges instead of just nodes
+    edges = {node : 0 for node in graph}
 
     while stack:
-        cnode = stack[-1]
+        node = stack[-1]
 
-        if cnode not in graph or not graph[cnode]:
-            # Dead end, backtrack
-            stack.pop()
-            continue
+        if edges[node] < len(graph[node]):
+            next_node = graph[node][edges[node]]
+            edges[node] += 1
+            stack.append(next_node)
+        else:
+            cycle.append(stack.pop())
 
-        next_node = graph[cnode].pop(0)  # Take one of its neighbors
+    cycle = cycle[::-1]
+    incomplete_nodes = [node for node in cycle if edges[node] < len(graph[node])]
 
-        if (cnode, next_node) in visited_edges:
-            continue  # Skip already visited edges
+    return cycle, incomplete_nodes
 
-        visited_edges.add((cnode, next_node))
-        stack.append(next_node)
+def EulerianCycle(graph):
+    start = list(graph.keys())[0]
+    cycle, incomplete_explored_nodes = formCycle(graph, start)
 
-        if next_node == node:
-            cycle = stack[:]
-            break  # Stop at cycle formation
+    while incomplete_explored_nodes:
+        newStart = incomplete_explored_nodes[0]
+        ncycle, incomplete_explored_nodes = formCycle(graph, newStart)
 
-    # Find unexplored edges
-    unexplored = []
-    for cnode in cycle:
-        if cnode in graph:
-            for neighbor in graph[cnode]:
-                if (cnode, neighbor) not in visited_edges:
-                    unexplored.append(neighbor)
+        index = cycle.index(newStart)
+        cycle = cycle[:index] + ncycle + cycle[index + 1:]
 
-    return cycle, unexplored
+        incomplete_explored_nodes = []
+        for node in cycle:
+            for next_node in graph[node]:
+                if next_node not in cycle:
+                    incomplete_explored_nodes.append(node)
+    return cycle
 
-graph = {0: [3],
-1: [0],
-2: [1, 6],
-3: [2],
-4: [2],
-5: [4],
-6: [5, 8],
-7: [9],
-8: [7],
-9: [6]}
+def parsing(text):
+    graph = {}
+    text = text.strip().split("\n")
+    for item in text:
+        key, value = item.split(": ")
+        values = value.split()
+        graph[int(key)] = [int(value) for value in values]
+    return graph
 
-print(formCycle(graph, 0))
+if __name__ == "__main__":
+    for i in range(7):
+        file_input = open(f"EulerianCycle/inputs/input_{i + 1}.txt")
+        file_input_text = file_input.read()
+        graph = parsing(file_input_text)
 
-# def EulerianCycle(graph):
-#     stack = [0]
-#     while len(stack) != 0:
-#         node = stack.pop()
+        file_output = open(f"EulerianCycle/outputs/output_{i + 1}.txt")
+        file_output_text = file_output.read().strip()
+
+        f_cycle = " ".join(str(element) for element in EulerianCycle(graph))
+
+        if file_output_text == f_cycle:
+            print(f"Test {i + 1} is Passed")
+        else:
+            print(f"Test {i + 1} is Failed")
+            print(file_output_text, "\n", f_cycle)
+
+    file_input = open(f"/home/swativ5/Downloads/dataset_30187_2.txt")
+    file_input_text = file_input.read()
+    graph = parsing(file_input_text)
+    f_cycle = " ".join(str(element) for element in EulerianCycle(graph))
+    f = open("test.txt", "w")
+    f.write(f_cycle)
