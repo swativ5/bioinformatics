@@ -32,7 +32,7 @@ def DeBruijnKmers(kmers):
     graph = {}
     for kmer in kmers:
         p, s = prefix(kmer), suffix(kmer)
-        graph.setdefault(p, []).append(s)  # Fixes the overwriting issue
+        graph.setdefault(p, []).append(s)
     return graph
 
 if __name__ == "__main__":
