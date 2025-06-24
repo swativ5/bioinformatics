@@ -89,6 +89,7 @@ if __name__ == "__main__":
         file_output_text = file_output.read().strip()
 
         f_output = ContigGeneration(kmers)
+        f_output = " ".join(f_output)
 
         if file_output_text == f_output:
             print(f"Test {i + 1} is Passed")
