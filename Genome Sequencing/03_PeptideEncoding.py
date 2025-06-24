@@ -62,9 +62,18 @@ if __name__ == "__main__":
     f_rna_text = f_rna.read()
     rna_table = create_rna_table(f_rna_text)
 
-    file_input = open("/home/swativ5/Downloads/dataset_30213_7.txt", "r")
+    # file_input = open("/home/swativ5/Downloads/dataset_30213_7.txt", "r")
+    # file_input_text = file_input.read()
+    # Text, Peptide = file_input_text.strip().split("\n")
+    # substrings = PeptideEncoding(Text, Peptide, rna_table)
+    # f = open("test.txt", "w")
+    # f.write("\n".join(substrings))
+
+    # Challenge 
+    Peptide = "VKLFPWFNQY"
+    file_input = open("Bacillus_brevis.txt", "r")
     file_input_text = file_input.read()
-    Text, Peptide = file_input_text.strip().split("\n")
+    Text = file_input_text.strip().replace("\n", "")
     substrings = PeptideEncoding(Text, Peptide, rna_table)
     f = open("test.txt", "w")
     f.write("\n".join(substrings))
