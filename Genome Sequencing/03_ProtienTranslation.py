@@ -24,7 +24,7 @@ def create_rna_table(input_text):
 
 def ProteinTranslation(rna_table, sequence):
     protein = ""
-    for i in range(0, len(sequence) - 2, 3):  # step of 3
+    for i in range(0, len(sequence) - 2, 3): 
         codon = sequence[i:i + 3]
         amino_acid = rna_table.get(codon, "")
         if amino_acid == "*":
