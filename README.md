@@ -10,7 +10,7 @@ Though I’m stopping after the third course for now, I might return to complete
 
 ---
 
-## 🧾 Courses Completed / In Progress
+## Courses Completed / In Progress
 
 | Course | Title | Status | Folder |
 |--------|-------|--------|--------|
