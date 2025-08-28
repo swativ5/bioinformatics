@@ -14,9 +14,9 @@ Though I’m stopping after the third course for now, I might return to complete
 
 | Course | Title | Status | Folder |
 |--------|-------|--------|--------|
-| 1 | Finding Hidden Messages in DNA | Completed | [`Bioinformatics-I`](./Finding%20Hidden%20Messages%20in%20DNA/) |
-| 2 | Genome Sequencing | (Pending Grading) | [`Bioinformatics-II`](./Genome%20Sequencing/) |
-| 3 | Comparing Genes, Proteins, and Genomes | In progress | [`Bioinformatics-III`](./Comparing%20Genes,%20Proteins,%20and%20Genomes/) |
+| 1 | Finding Hidden Messages in DNA | Completed | [`Bioinformatics-I`](./Bioinformatics%20I%20Finding%20Hidden%20Messages%20in%20DNA/) |
+| 2 | Genome Sequencing | (Pending Grading) | [`Bioinformatics-II`](./Bioinformatics%20II%20Genome%20Sequencing/) |
+| 3 | Comparing Genes, Proteins, and Genomes | In progress | [`Bioinformatics-III`](./Bioinformatics%20III%20Comparing%20Genes,%20Proteins,%20and%20Genomes/) |
 
 
 
