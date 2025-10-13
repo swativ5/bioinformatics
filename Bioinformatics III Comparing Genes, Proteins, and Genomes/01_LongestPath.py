@@ -102,3 +102,40 @@ if __name__ == "__main__":
     length, path = LongestPath(graph, start, end)
     f = open("test.txt", "w")
     f.write(str(length) + '\n' + ' '.join(map(str, path)))
+
+    input_data = '''0 6
+0 1 5
+0 2 6
+0 3 5
+1 2 2
+1 5 4
+2 4 4
+2 5 3
+2 6 7
+3 4 4
+3 5 5
+4 6 2
+5 6 1'''
+    input_data = input_data.strip().split('\n')
+    start, end = map(int, input_data[0].split())
+    edges = [list(map(int, line.split())) for line in input_data[1:]]
+    graph = {}
+    for u, v, w in edges:
+        if u not in graph:
+            graph[u] = []
+        graph[u].append((v, w))
+        if v not in graph:
+            graph[v] = []
+    length, path = LongestPath(graph, start, end)
+    print(length)
+    print(' '.join(map(str, path)))
+
+    graph = {
+        'a': [('b', 1), ('c', 1), ('d', 1), ('e', 1), ('f', 1)],
+        'b': [('c', 1), ('f', 1)],
+        'c': [('d', 1)],
+        'd': [],
+        'e': [('d', 1), ('f', 1)],
+        'f': []
+    }
+    print(" ".join(map(str, topological_sort(graph))))

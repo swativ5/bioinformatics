@@ -106,11 +106,11 @@ def IterativeOutputLCS(backtrack, v, w):
 
 
 if __name__ == "__main__":
-    file_input = open("/home/swativ5/Downloads/dataset_30197_5(1).txt", "r")
-    file_input_text = file_input.read()
-    s, t = file_input_text.strip().split('\n')
-    # s = "AACCTTGG"
-    # t = "ACACTGTGA"
+    # file_input = open("/home/swativ5/Downloads/dataset_30197_5(1).txt", "r")
+    # file_input_text = file_input.read()
+    # s, t = file_input_text.strip().split('\n')
+    s = "CTCGAT"
+    t = "TACGTC"
     backtrack = LCSBackTrack(s, t)
 
     # sys.setrecursionlimit(10000)
@@ -120,4 +120,11 @@ if __name__ == "__main__":
     f = open("test.txt", "w")
     f.write(str(result))
     f.close()
+    print(result)
+
+
+    s = "CTCGAT"
+    t = "TACGTC"
+    backtrack = LCSBackTrack(s, t)
+    result = IterativeOutputLCS(backtrack, s, t)
     print(result)

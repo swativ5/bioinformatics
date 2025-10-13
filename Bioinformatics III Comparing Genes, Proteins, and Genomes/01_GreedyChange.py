@@ -24,4 +24,4 @@ def GreedyChange(money, coins):
     return change
 
 
-print(GreedyChange(63, [25, 10, 5, 1]))
+print(GreedyChange(22, [25, 10, 5, 1]))
